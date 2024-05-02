@@ -1,38 +1,41 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using System;
 
-namespace ProtectedApi.Controllers
+[ApiController]
+[Route("[controller]")]
+public class ValueController : ControllerBase
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class ValuesController : ControllerBase
-    {
-        [HttpGet]
-        [Authorize]
-        public IActionResult Get()
-        {
-            var userInfo = new 
-            {
-                Name = "John Doe",
-                Section = "A",
-                Course = "Computer Science",
-                FunFacts = new List<string>
-                {
-                    "Fact 1",
-                    "Fact 2",
-                    "Fact 3",
-                    "Fact 4",
-                    "Fact 5",
-                    "Fact 6",
-                    "Fact 7",
-                    "Fact 8",
-                    "Fact 9",
-                    "Fact 10"
-                }
-            };
+    private readonly string _owner = "Rogel Gerodiaz"; 
 
-            return Ok(userInfo);
-        }
+    [HttpGet("about/me")]
+    public IActionResult AboutMe()
+    {
+        var random = new Random();
+        var thingsAboutOwner = new[] 
+        { 
+            "I am a BSIT student", 
+            "I love playing online games such as League of Legends and Mobile Legends", 
+            "I'm into web development as a front-end developer and willing to learn full stack" 
+        }; 
+        var thing = thingsAboutOwner[random.Next(thingsAboutOwner.Length)];
+
+        return Ok(thing);
     }
+
+    [HttpGet("about")]
+    public IActionResult About()
+    {
+        return Ok(_owner);
+    }
+
+    [HttpPost("about")]
+    public IActionResult About([FromBody] NameModel model)
+    {
+        return Ok($"Hi {model.Name} from {_owner}");
+    }
+}
+
+public class NameModel
+{
+    public string Name { get; set; }
 }
