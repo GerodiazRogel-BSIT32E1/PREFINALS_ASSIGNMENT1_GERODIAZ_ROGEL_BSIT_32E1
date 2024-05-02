@@ -1,5 +1,12 @@
-public interface IUserService
+using AuthServer.Core;
+using System.Threading.Tasks;
+
+namespace AuthServer.Core
 {
-    Task<User> GetUserByUsername(string username);
-    Task CreateUser(User user);
+    public interface IUserService
+    {
+        Task<User> GetUserByUsername(string username);
+        Task CreateUser(User user);
+        // Add other methods as needed...
+    }
 }
