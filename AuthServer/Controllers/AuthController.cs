@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using AuthServer.Core;
 
 [ApiController]
 [Route("[controller]")]
