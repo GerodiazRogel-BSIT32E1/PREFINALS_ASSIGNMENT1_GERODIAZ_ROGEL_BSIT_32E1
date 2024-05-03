@@ -15,7 +15,7 @@ namespace ProtectedApi
             var random = new Random();
             var thingsAboutOwner = new[]
             {
-                "I am a BSIT student",
+                "I am a BSIT student, im currently studying at Lyceum of Alabang",
                 "I love playing online games such as League of Legends and Mobile Legends",
                 "I'm into web development as a front-end developer and willing to learn full stack"
             };
