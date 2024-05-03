@@ -7,6 +7,6 @@ namespace AuthServer.Core
     {
         Task<User> GetUserByUsername(string username);
         Task CreateUser(User user);
-        // Add other methods as needed...
+   
     }
 }
