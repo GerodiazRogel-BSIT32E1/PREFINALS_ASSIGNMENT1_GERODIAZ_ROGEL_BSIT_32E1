@@ -1,7 +1,7 @@
 namespace ProtectedApi
 {
-    using Microsoft.AspNetCore.Mvc;
     using System;
+    using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
     [Route("[controller]")]
@@ -39,6 +39,11 @@ namespace ProtectedApi
 
     public class NameModel
     {
-        public string? Name { get; set; }
+        private string? _name = "Sr. Alamo";
+        public string? Name
+        {
+            get { return _name == "string" ? "Sr. Alamo" : _name; }
+            set { _name = value; }
+        }
     }
 }
